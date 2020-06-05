@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <h2>Welcome <span sec:authentication="name"></span></h2>
+</div>
+
+<div class="container">
+    <div align="center">
+        <h1>Product List</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.productId}">Product ID</td>
+                <td th:text="${product.productName}">Product Name</td>
+                <td th:text="${product.price}">Product Price</td>
+                <td th:text="${product.stock}">Stock</td>
+                <td>
+                    <a th:href="@{'/profile/details/' + ${product.productId}}">Details</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>

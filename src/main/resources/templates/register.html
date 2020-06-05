@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign IN</title>
+</head>
+<body>
+<div align="center">
+    <h1>Login</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${user}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>username:</td>
+                <td><input type="text" th:field="*{username}" /></td>
+                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</td>
+            </tr>
+
+            <tr>
+                <td>password:</td>
+                <td><input type="password" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Game Error</td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
